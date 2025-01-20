@@ -1,0 +1,20 @@
+CREATE TABLESPACE f24cst2355assignment2group4
+  DATAFILE 'f24cst2355assignment2group4.dat' SIZE 40M 
+  ONLINE; 
+  
+-- Create Users
+CREATE USER A2G4Admin IDENTIFIED BY A2G4AdminPassword ACCOUNT UNLOCK
+	DEFAULT TABLESPACE f24cst2355assignment2group4
+	QUOTA 20M ON f24cst2355assignment2group4;
+	
+-- Create ROLES
+CREATE ROLE A2G4ApplicationAdmin;
+
+-- Grant PRIVILEGES
+GRANT CONNECT, RESOURCE, CREATE VIEW, CREATE TRIGGER, CREATE PROCEDURE TO A2G4ApplicationAdmin;
+
+GRANT A2G4ApplicationAdmin TO A2G4Admin;
+
+-- Connect as the A2G4Admin
+
+CONNECT A2G4Admin/A2G4AdminPassword;
